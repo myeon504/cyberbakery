@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cyber Bakery</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/nec1oqu.css">
+    <style>
+    html{cursor: url(main_cursor_1.png), auto;}
+        body{min-width: 1280px; min-height: 960px; overflow-y: auto; position: relative;}
+        body,html {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            background-image: url(mainbg.mp4);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        section{display: flex;}
+        
+		#main-video{
+				position: absolute;
+				overflow: hidden;
+				top: 0%; left: 50%;
+				transform: translate(-50%, 0%);
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+				outline: 0px;
+				border: 0px;}
+        #main-button{
+				position: absolute;
+				overflow: hidden;
+				top: 0%; left: 50%;
+				transform: translate(-50%, 0%);
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+				outline: 0px;
+				border: 0px;}
+
+        header{width: 100%;
+                min-width: 1280px;
+                height: 200px;
+                position: absolute;
+                top: 0;
+                text-align: center;
+                z-index: 10;}
+        .headerbox1{width: 100%; height: 130px; top: 0; background: linear-gradient(0deg, rgba(86,95,154,1) 10%, rgba(0,0,0,1) 100%);}
+        .headerline{background-image: url("headerline.png"); background-position: center;}
+        .headerbox2{width: 100%; height: 10px; position: relative; background: linear-gradient(180deg, rgba(255,126,145,1) 0%, rgba(255,202,211,1) 30%, rgba(255,167,175,1) 60%, rgba(255,126,145,1) 100%);}
+        .headerbox4{width: 100%; height: 40px; position: relative; background-image: url("pattern_1.png"); background-repeat: repeat-x;}
+        .title-container{position: relative; display: block; height: 130px;}
+        .title-container img{
+            height: 100%;
+            width: auto;
+        }
+        
+        .button_click{position: absolute; 
+                    transform: translate(-50%, -50%);
+                    top: 50%; left: 57%;
+                    width: 40%; height: 40%;
+                    cursor: url(main_cursor_2.png), auto;}
+        footer{position: absolute;
+            width: 100%;
+            bottom: 0;}
+        
+    
+        </style>
+</head>
+
+<body>
+    <header>
+        <div class="headerbox1">
+            <div class="headerline">
+        <div class="title-container">
+        <img src="logo.gif">
+        </div>
+    </div>
+    </div>
+        <div class="headerbox2">
+        </div>
+        <div class="headerbox2">
+        </div>
+        <div class="headerbox4">
+        </div>
+    </header>
+
+    <section>
+        <video autoplay muted loop id="main-video">
+            <source src="mainbg.mp4" type="video/mp4">
+        </video>
+            <img src="main_button.png" id="main-button">
+            <a href="date.html">
+            <div class="button_click" 
+            onmouseover="buttonA(this)"
+            onmouseout="buttonB(this)">
+            </div>
+        </a>
+    </section>
+
+    <footer>
+        <div class="footer-gradient"></div>
+    </footer>
+
+    <script>
+        var buttonImg = document.getElementById('main-button');
+
+        function buttonA(){
+        buttonImg.src = "main_button_hover.png";
+        }
+
+        function buttonB(){
+        buttonImg.src = "main_button.png";
+        }
+    </script>
+</body>
+
+</html>
