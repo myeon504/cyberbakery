@@ -19,10 +19,6 @@
             height: 100vh;
             top: 0;
             left: 0;
-            background-image: url(mainbg.mp4);
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
         }
         section{display: flex;}
         
@@ -31,6 +27,16 @@
 				overflow: hidden;
 				top: 0%; left: 50%;
 				transform: translate(-50%, 0%);
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+				outline: 0px;
+				border: 0px;}
+	#main-text{
+		position: absolute;
+		overflow: hidden;
+		top: 0%; left: 50%;
+		transform: translate(-50%, 0%);
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
@@ -111,11 +117,12 @@
         </div>
     </header>
 
-    <section>
+<section>
         <video autoplay muted loop id="main-video">
             <source src="mainbg.mp4" type="video/mp4">
         </video>
-            <img src="main_button.gif" id="main-button">
+            <img src="main_text.gif" id="main-text">
+            <img src="main_button.png" id="main-button">
             <a href="date.html">
             <div class="button_click" 
             onmouseover="buttonA(this)"
