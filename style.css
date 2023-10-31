@@ -139,7 +139,7 @@ input[id="email"]{
     position: absolute;
     display: block;
     top: 190px;
-    left: 4%;
+    left: 5%;
     min-width: 640px;
     background-color: transparent;
 }
@@ -168,7 +168,7 @@ header{width: 100%;
     z-index: 2;
     position: absolute;
     top: 50%;
-    left: 46%;
+    left: 45%;
     transform: translate(-50%, -50%);
     height: 90%;
     width: 500px;
@@ -179,7 +179,7 @@ header{width: 100%;
     z-index: 3;
     position: absolute;
     top: 50%;
-    left: 46%;
+    left: 45%;
     transform: translate(-50%, -50%);
     height: 90%;
     width: 500px;
