@@ -31,13 +31,12 @@
         </div>
     </header>
     <section>
-        <canvas id="c"></canvas>
         <div class="half"></div>
 
         <div class="half">
-            <div class="form-container-blur">
+            <div class="form-container-blur" id="formBlur">
             </div>
-            <div class="form-container">
+            <div class="form-container" id="formContainer">
                 <div class="container-space">
                     <p class="form-title">Order Form</p>
                             <div class="page-container">
@@ -78,30 +77,30 @@
                                             </div>
                                             
                                             <div class="time-flex">
-                                            <div class="time-button" id="time11">
+                                            <div class="time-button" id="time11" onclick="checkedtime11()">
                                             <p>11:00</p>
                                             </div>
-                                            <div class="time-button" id="time12">
+                                            <div class="time-button" id="time12" onclick="checkedtime12()">
                                             <p>12:00</p>
                                             </div>
-                                            <div class="time-button" id="time13">
+                                            <div class="time-button" id="time13" onclick="checkedtime13()">
                                             <p>13:00</p>
                                             </div>
-                                            <div class="time-button" id="time14">
+                                            <div class="time-button" id="time14" onclick="checkedtime14()">
                                             <p>14:00</p>
                                             </div>
                                             </div>
                                             <div class="time-flex">
-                                            <div class="time-button" id="time15">
+                                            <div class="time-button" id="time15" onclick="checkedtime15()">
                                             <p>15:00</p>
                                             </div>
-                                            <div class="time-button" id="time16">
+                                            <div class="time-button" id="time16" onclick="checkedtime16()">
                                             <p>16:00</p>
                                             </div>
-                                            <div class="time-button" id="time17">
+                                            <div class="time-button" id="time17" onclick="checkedtime17()">
                                             <p>17:00</p>
                                             </div>
-                                            <div class="time-button" id="time18">
+                                            <div class="time-button" id="time18" onclick="checkedtime18()">
                                             <p>18:00</p>
                                             </div>
                                             </div>
@@ -115,12 +114,12 @@
                                         <div class="types">
                                         <div class="typerow">
                                     <div class="item">
-                                    <input type="radio" name="flavor" value="vanilla" id="vanilla" checked>
+                                    <input type="radio" name="flavor" value="vanilla" id="vanilla" onclick="checkedVanilla()" checked>
                                     <label for="vanilla"><span>Vanilla</span></label>
                                     </div>
                                     <div class="flavor"><label for="vanilla"><img src="vanilla.png"></label></div>
                                     <div class="item">
-                                    <input type="radio" name="flavor" value="redvelvet"  id="redvelvet">
+                                    <input type="radio" name="flavor" value="redvelvet"  onclick="checkedRedvelvet()"  id="redvelvet">
                                     <label for="redvelvet"><span>Red velvet</span></label> 
                                     </div>
                                     <div class="flavor">
@@ -128,13 +127,13 @@
                                         </div>
                                         <div class="typerow1">
                                     <div class="item">
-                                    <input type="radio" name="flavor" value="chocolate" id="chocolate">
+                                    <input type="radio" name="flavor" value="chocolate"  onclick="checkedChocolate()" id="chocolate">
                                     <label for="chocolate"><span>Chocolate</span></label>
                                     </div>
                                     <div class="flavor">
                                         <label for="chocolate"><img src="chocolate.png"></label></div>
                                     <div class="item">
-                                    <input type="radio" name="flavor" value="matcha" id="matcha">
+                                    <input type="radio" name="flavor" value="matcha"  onclick="checkedMatcha()" id="matcha">
                                 <label for="matcha"><span>Matcha</span></label> 
                                     </div>
                                     <div class="flavor"><label for="matcha"><img src="matcha.png"></label></div>
@@ -303,29 +302,29 @@
                                 </div>    
                             <div class="coloritem">
                                 <div class="colorLabelBox">
-                                <label for="name">Name</label>
+                                <label for="inputName">Name</label>
                                 </div>
-                                <input type="text" id="name">
-                            </div>
+                                <input type="text" id="inputName" onkeyup='printName()'>
+                                </div>
 
                             <div class="coloritem">
                                 <div class="colorLabelBox">
                                 <label for="phone">Phone</label>
                                 </div>
-                                <input type="text" id="phone">
+                                <input type="text" id="inputPhone1" onkeyup='printPhone()'>
                                 <p class="information">-</p>
-                                <input type="text" id="phone">
+                                <input type="text" id="inputPhone2" onkeyup='printPhone()'>
                                 <p class="information">-</p>
-                                <input type="text" id="phone">
+                                <input type="text" id="inputPhone3" onkeyup='printPhone()'>
                             </div>
 
                             <div class="coloritem">
                                 <div class="colorLabelBox">
                             <label for="email">Email</label>
                             </div>
-                            <input type="text" id="email">
+                            <input type="text" id="inputEmail1" onkeyup='printEmail()'>
                             <p class="information">@</p>
-                            <input type="text" id="email">
+                            <input type="text" id="inputEmail2" onkeyup='printEmail()'>
                             </div>
                                     </div>  
                                 </div>
@@ -343,23 +342,214 @@
                                     <div class="arrow" id="arrowR"></div>
                                     </div>
                                 </a>
-                                <a href="complete.html" id="finish">
-                                    <div class="finish-button">
+                                <a id="finish">
+                                <div class="finish-button" onclick="orderFinish()">
                                     finish!
-                                    </div>
+                                </div>
                                 </a>
                             </div>  
                 </div>
             </div>
         </div>
-    </section>
+
+
+            <div class="completed-blur" id="finishWindowBlur">
+            </div>
+            <div class="completed-container" id="finishWindow">
+                <div class="completed-space" id="img_area">
+                    <p class="completed-title">Order Completed</p>
+
+                    <div class="completed-line1">
+                        <div class="line1-item">
+                            <p class="line1-title">Order Date :</p>
+                            <div class="completed-underline">
+                                <p class="line1-content" id="current_date"></p>  
+                            </div>
+                        </div>
+                        <div class="line1-item">
+                            <p class="line1-title">Order Number :</p>  
+                            <div class="completed-underline">
+                                <p class="line1-content" id="ordernumber"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="completed-line2">
+                        <div class="line2-item">
+                        <p class="line2-title">Name :</p>
+                        <p class="line2-content" id="orderName">-</p>
+                    </div>
+                    <div class="line2-item">
+                        <p class="line2-title">Phone :</p>
+                        <p class="line2-content" id="orderPhone">-</p>
+                    </div>
+                    <div class="line2-item" style="border-right: none">
+                        <p class="line2-title">Email :</p>
+                        <p class="line2-content" id="orderEmail">-</p>
+                    </div>
+                    </div>
+                    <div class="completed-line3">
+                        <div class="cake-design">
+                            <canvas id="c"></canvas>
+                        </div>
+                        <div class="cake-information">
+                            <div class="cake-information-item">
+                            <div class="cake-information-line">
+                            <p class="cake-information-title">
+                                Flavor
+                            </p>
+                                <div class="cake-information-select">
+                                <div class="cake-information-flavor">
+                                        <div class="item-name">
+                                        <img src="checked.png" id="vanilla-check">
+                                        <p class="cake-information-content">
+                                            Vanilla
+                                        </p>
+                                        </div>
+                                    <img src="vanilla.png" class="flavor-img">
+                                </div>
+                                    <div class="cake-information-flavor">
+                                        <div class="item-name">
+                                        <img src="unchecked.png" id="chocolate-check">
+                                        <p class="cake-information-content">
+                                            Chocolate
+                                        </p>
+                                        </div>
+                                    <img src="chocolate.png" class="flavor-img">
+                                    </div>
+                                        <div class="cake-information-flavor">
+                                            <div class="item-name">
+                                            <img src="unchecked.png" id="redvelvet-check">
+                                            <p class="cake-information-content">
+                                                Red velvet
+                                            </p>
+                                            </div>
+                                        <img src="redvelvet.png" class="flavor-img">
+                                        </div>
+                                    <div class="cake-information-flavor">
+                                        <div class="item-name">
+                                            <img src="unchecked.png" id="matcha-check">
+                                            <p class="cake-information-content">
+                                                Matcha
+                                            </p>
+                                        </div>
+                                    <img src="matcha.png" class="flavor-img">
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="cake-information-item">
+                            <div class="cake-information-line">
+                            <p class="cake-information-title">
+                                Type
+                            </p>
+                                <div class="cake-information-select">
+                                    <div class="item-name">
+                                        <img src="checked.png" id="solid-check">
+                                        <p class="cake-information-content">
+                                            Solid
+                                        </p>
+                                    </div>
+                                    <div class="item-name">
+                                        <img src="unchecked.png" id="palette-check">
+                                        <p class="cake-information-content">
+                                            Palette
+                                        </p>
+                                    </div>
+                                    <div class="item-name">
+                                        <img src="unchecked.png" id="garden-check">
+                                        <p class="cake-information-content">
+                                            Garden
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="cake-information-item" style="border-bottom: none; margin-bottom: 0;">
+                            <div class="cake-information-line">
+                            <p class="cake-information-title">
+                                Decoration
+                            </p>
+                            <div class="cake-information-select">
+                                <div>
+                                <div class="item-name" style="margin-bottom: 12px;">
+                                    <img src="checked.png" id="shell-check">
+                                    <p class="cake-information-content">
+                                        Shell
+                                    </p>
+                                </div>
+                                <div class="item-name">
+                                    <img src="unchecked.png" id="line-check">
+                                    <p class="cake-information-content">
+                                        Line
+                                    </p>
+                                </div>
+                            </div>
+                                <div>
+                                <div class="item-name" style="margin-bottom: 12px;">
+                                    <img src="unchecked.png" id="minishell-check">
+                                    <p class="cake-information-content">
+                                        Mini shell
+                                    </p>
+                                </div>
+                                <div class="item-name">
+                                    <img src="unchecked.png" id="rosettes-check">
+                                    <p class="cake-information-content">
+                                        Rosettes
+                                    </p>
+                                </div>
+                            </div>
+                                <div class="item-name">
+                                    <img src="unchecked.png" id="round-check">
+                                    <p class="cake-information-content">
+                                        Round
+                                    </p>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="completed-line4">
+                    <div class="line4-item">
+                        <p class="line4-title">
+                            Pickup Date
+                        </p>
+                        <p class="line4-content" id="pickupDate">
+                        -
+                        </p>
+                    </div>
+                    <div class="line4-item">
+                        <p class="line4-title">
+                            Pickup Time
+                        </p>
+                        <p class="line4-content" id="pickupTime">
+                        -
+                        </p>
+                    </div>
+                    </div>
+                </div>
+                <div class="completed-buttons">
+                    <div class="main-button" onclick="downImg()">
+                        <p>Save</p>
+                    </div>
+                    <div class="main-button" >
+                        <a href="main.html">
+                        <p>Main</p>
+                        </a>
+                    </div>
+                </div>       
+            </div>
+        </div>
+
 
     <footer>
-        <div class="footer-gradient"></div>
+    <div class="footer-gradient"></div>
     </footer>
     <script src='https://unpkg.com/three@0.127.0/build/three.js'></script>
     <script src='https://cdn.jsdelivr.net/gh/mrdoob/three.js@r92/examples/js/loaders/GLTFLoader.js'></script>
     <script src='https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="html2canvas.js"></script>
     <script src="script.js"></script>
 </body>
 
