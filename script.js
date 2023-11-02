@@ -6,6 +6,206 @@ var MODEL_PATH = "cake_modeling.glb";
 
 var loaded = false;
 
+window.onload = function () { buildCalendar(); }   
+
+let nowMonth = new Date();  
+let today = new Date();    
+today.setHours(0, 0, 0, 0);    
+
+
+function buildCalendar() {
+
+    let firstDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth(), 1);     
+    let lastDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth() + 1, 0);  
+
+    let tbody_Calendar = document.querySelector(".calendar > tbody");
+    document.getElementById("calYear").innerText = nowMonth.getFullYear();            
+    document.getElementById("calMonth").innerText = leftPad(nowMonth.getMonth() + 1);  
+
+    while (tbody_Calendar.rows.length > 0) {                        
+        tbody_Calendar.deleteRow(tbody_Calendar.rows.length - 1);
+    }
+
+    let nowRow = tbody_Calendar.insertRow();                
+
+    for (let j = 0; j < firstDate.getDay(); j++) {  
+        let nowColumn = nowRow.insertCell();        
+    }
+
+    for (let nowDay = firstDate; nowDay <= lastDate; nowDay.setDate(nowDay.getDate() + 1)) {     
+
+        let nowColumn = nowRow.insertCell();       
+
+
+        let newDIV = document.createElement("p");
+        newDIV.innerHTML = leftPad(nowDay.getDate());       
+        nowColumn.appendChild(newDIV);
+
+        if (nowDay.getDay() == 6) {                
+            nowRow = tbody_Calendar.insertRow();   
+        }
+
+        if (nowDay < today) {                      
+            newDIV.className = "pastDay";
+        }
+        else if (nowDay.getFullYear() == today.getFullYear() && nowDay.getMonth() == today.getMonth() && nowDay.getDate() == today.getDate()) {          
+            newDIV.className = "today";
+            newDIV.onclick = function () { choiceDate(this); }
+        }
+        else {                                      
+            newDIV.className = "futureDay";
+            newDIV.onclick = function () { choiceDate(this); }
+        }
+    }
+}
+
+function choiceDate(newDIV) {
+    if (document.getElementsByClassName("choiceDay")[0]) {                     
+        document.getElementsByClassName("choiceDay")[0].classList.remove("choiceDay"); 
+    }
+    newDIV.classList.add("choiceDay");
+    document.getElementById("pickupDate").innerHTML = document.getElementById("calYear").innerText + ". " + document.getElementById("calMonth").innerText + ". " + document.querySelector(".choiceDay").innerText;  
+}
+
+function prevCalendar() {
+    nowMonth = new Date(nowMonth.getFullYear(), nowMonth.getMonth() - 1, nowMonth.getDate());   
+    buildCalendar();    
+}
+
+function nextCalendar() {
+    nowMonth = new Date(nowMonth.getFullYear(), nowMonth.getMonth() + 1, nowMonth.getDate());   
+    buildCalendar();    
+}
+
+function leftPad(value) {
+    return value;
+}
+
+
+function checkedtime11(){
+  document.getElementById("time11").classList.replace("time-button", "time-selected");
+  document.getElementById("time12").classList.replace("time-selected", "time-button");
+  document.getElementById("time13").classList.replace("time-selected", "time-button");
+  document.getElementById("time14").classList.replace("time-selected", "time-button");
+  document.getElementById("time15").classList.replace("time-selected", "time-button");
+  document.getElementById("time16").classList.replace("time-selected", "time-button");
+  document.getElementById("time17").classList.replace("time-selected", "time-button");
+  document.getElementById("time18").classList.replace("time-selected", "time-button");
+  document.getElementById("pickupTime").innerHTML = "11:00";
+}
+
+function checkedtime12(){
+  document.getElementById("time12").classList.replace("time-button", "time-selected");
+  document.getElementById("time11").classList.replace("time-selected", "time-button");
+  document.getElementById("time13").classList.replace("time-selected", "time-button");
+  document.getElementById("time14").classList.replace("time-selected", "time-button");
+  document.getElementById("time15").classList.replace("time-selected", "time-button");
+  document.getElementById("time16").classList.replace("time-selected", "time-button");
+  document.getElementById("time17").classList.replace("time-selected", "time-button");
+  document.getElementById("time18").classList.replace("time-selected", "time-button");
+  document.getElementById("pickupTime").innerHTML = "12:00";
+}
+
+function checkedtime13(){
+  document.getElementById("time13").classList.replace("time-button", "time-selected");
+  document.getElementById("time11").classList.replace("time-selected", "time-button");
+  document.getElementById("time12").classList.replace("time-selected", "time-button");
+  document.getElementById("time14").classList.replace("time-selected", "time-button");
+  document.getElementById("time15").classList.replace("time-selected", "time-button");
+  document.getElementById("time16").classList.replace("time-selected", "time-button");
+  document.getElementById("time17").classList.replace("time-selected", "time-button");
+  document.getElementById("time18").classList.replace("time-selected", "time-button");
+  document.getElementById("pickupTime").innerHTML = "13:00";
+}
+
+function checkedtime14(){
+  document.getElementById("time14").classList.replace("time-button", "time-selected");
+  document.getElementById("time11").classList.replace("time-selected", "time-button");
+  document.getElementById("time12").classList.replace("time-selected", "time-button");
+  document.getElementById("time13").classList.replace("time-selected", "time-button");
+  document.getElementById("time15").classList.replace("time-selected", "time-button");
+  document.getElementById("time16").classList.replace("time-selected", "time-button");
+  document.getElementById("time17").classList.replace("time-selected", "time-button");
+  document.getElementById("time18").classList.replace("time-selected", "time-button");
+  document.getElementById("pickupTime").innerHTML = "14:00";
+}
+
+function checkedtime15(){
+  document.getElementById("time15").classList.replace("time-button", "time-selected");
+  document.getElementById("time11").classList.replace("time-selected", "time-button");
+  document.getElementById("time12").classList.replace("time-selected", "time-button");
+  document.getElementById("time13").classList.replace("time-selected", "time-button");
+  document.getElementById("time14").classList.replace("time-selected", "time-button");
+  document.getElementById("time16").classList.replace("time-selected", "time-button");
+  document.getElementById("time17").classList.replace("time-selected", "time-button");
+  document.getElementById("time18").classList.replace("time-selected", "time-button");
+  document.getElementById("pickupTime").innerHTML = "15:00";
+}
+
+function checkedtime16(){
+  document.getElementById("time16").classList.replace("time-button", "time-selected");
+  document.getElementById("time11").classList.replace("time-selected", "time-button");
+  document.getElementById("time12").classList.replace("time-selected", "time-button");
+  document.getElementById("time13").classList.replace("time-selected", "time-button");
+  document.getElementById("time14").classList.replace("time-selected", "time-button");
+  document.getElementById("time15").classList.replace("time-selected", "time-button");
+  document.getElementById("time17").classList.replace("time-selected", "time-button");
+  document.getElementById("time18").classList.replace("time-selected", "time-button");
+  document.getElementById("pickupTime").innerHTML = "16:00";
+}
+
+function checkedtime17(){
+  document.getElementById("time17").classList.replace("time-button", "time-selected");
+  document.getElementById("time11").classList.replace("time-selected", "time-button");
+  document.getElementById("time12").classList.replace("time-selected", "time-button");
+  document.getElementById("time13").classList.replace("time-selected", "time-button");
+  document.getElementById("time14").classList.replace("time-selected", "time-button");
+  document.getElementById("time15").classList.replace("time-selected", "time-button");
+  document.getElementById("time16").classList.replace("time-selected", "time-button");
+  document.getElementById("time18").classList.replace("time-selected", "time-button");
+  document.getElementById("pickupTime").innerHTML = "17:00";
+}
+
+function checkedtime18(){
+  document.getElementById("time18").classList.replace("time-button", "time-selected");
+  document.getElementById("time11").classList.replace("time-selected", "time-button");
+  document.getElementById("time12").classList.replace("time-selected", "time-button");
+  document.getElementById("time13").classList.replace("time-selected", "time-button");
+  document.getElementById("time14").classList.replace("time-selected", "time-button");
+  document.getElementById("time15").classList.replace("time-selected", "time-button");
+  document.getElementById("time16").classList.replace("time-selected", "time-button");
+  document.getElementById("time17").classList.replace("time-selected", "time-button");
+  document.getElementById("pickupTime").innerHTML = "18:00";
+}
+
+function checkedVanilla(){
+  document.getElementById("vanilla-check").src = "checked.png";
+  document.getElementById("chocolate-check").src = "unchecked.png";
+  document.getElementById("redvelvet-check").src = "unchecked.png";
+  document.getElementById("matcha-check").src = "unchecked.png";
+}
+
+function checkedChocolate(){
+  document.getElementById("vanilla-check").src = "unchecked.png";
+  document.getElementById("chocolate-check").src = "checked.png";
+  document.getElementById("redvelvet-check").src = "unchecked.png";
+  document.getElementById("matcha-check").src = "unchecked.png";
+}
+
+function checkedRedvelvet(){
+  document.getElementById("vanilla-check").src = "unchecked.png";
+  document.getElementById("chocolate-check").src = "unchecked.png";
+  document.getElementById("redvelvet-check").src = "checked.png";
+  document.getElementById("matcha-check").src = "unchecked.png";
+}
+
+function checkedMatcha(){
+  document.getElementById("vanilla-check").src = "unchecked.png";
+  document.getElementById("chocolate-check").src = "unchecked.png";
+  document.getElementById("redvelvet-check").src = "unchecked.png";
+  document.getElementById("matcha-check").src = "checked.png";
+}
+
 document.getElementById("palettecolor1").style.display="none";
 document.getElementById("palettecolor2").style.display="none";
 document.getElementById("gardencolor1").style.display="none";
@@ -21,6 +221,9 @@ document.getElementById("gardencolor10").style.display="none";
 document.getElementById("gardenDesign").style.display="none";
 
 function checkedSolid(){
+  document.getElementById("solid-check").src = "checked.png";
+  document.getElementById("palette-check").src = "unchecked.png";
+  document.getElementById("garden-check").src = "unchecked.png";
   document.getElementById("palettecolor1").style.display="none";
   document.getElementById("palettecolor2").style.display="none";
   document.getElementById("gardencolor1").style.display="none";
@@ -55,6 +258,9 @@ function checkedSolid(){
 
 
 function checkedPalette(){
+  document.getElementById("solid-check").src = "unchecked.png";
+  document.getElementById("palette-check").src = "checked.png";
+  document.getElementById("garden-check").src = "unchecked.png";
   document.getElementById("palettecolor1").style.display="flex";
   document.getElementById("palettecolor2").style.display="flex";
   document.getElementById("gardencolor1").style.display="none";
@@ -93,6 +299,9 @@ function checkedPalette(){
 }
 
 function checkedGarden(){
+  document.getElementById("solid-check").src = "unchecked.png";
+  document.getElementById("palette-check").src = "unchecked.png";
+  document.getElementById("garden-check").src = "checked.png";
   document.getElementById("palettecolor1").style.display="none";
   document.getElementById("palettecolor2").style.display="none";
   document.getElementById("gardencolor1").style.display="flex";
@@ -249,6 +458,12 @@ function selectGarden(z){
 
 function selectCream(y){
   if(y.value == "cream1"){
+    document.getElementById("shell-check").src = "checked.png";
+    document.getElementById("minishell-check").src = "unchecked.png";
+    document.getElementById("round-check").src = "unchecked.png";
+    document.getElementById("line-check").src = "unchecked.png";
+    document.getElementById("rosettes-check").src = "unchecked.png";
+
     document.getElementById("sidecolor").style.display="flex";
     cakeModel.traverse(function(child){
       if(child instanceof THREE.Mesh){
@@ -271,6 +486,12 @@ function selectCream(y){
     })
    }
    else if(y.value == "cream2"){
+    document.getElementById("shell-check").src = "unchecked.png";
+    document.getElementById("minishell-check").src = "checked.png";
+    document.getElementById("round-check").src = "unchecked.png";
+    document.getElementById("line-check").src = "unchecked.png";
+    document.getElementById("rosettes-check").src = "unchecked.png";
+
     document.getElementById("sidecolor").style.display="flex";
     cakeModel.traverse(function(child){
       if(child instanceof THREE.Mesh){
@@ -293,6 +514,12 @@ function selectCream(y){
     })
    }
    else if(y.value == "cream3"){
+    document.getElementById("shell-check").src = "unchecked.png";
+    document.getElementById("minishell-check").src = "unchecked.png";
+    document.getElementById("round-check").src = "checked.png";
+    document.getElementById("line-check").src = "unchecked.png";
+    document.getElementById("rosettes-check").src = "unchecked.png";
+
     document.getElementById("sidecolor").style.display="none";
     cakeModel.traverse(function(child){
       if(child instanceof THREE.Mesh){
@@ -315,6 +542,12 @@ function selectCream(y){
     })
    }
    else if(y.value == "cream4"){
+    document.getElementById("shell-check").src = "unchecked.png";
+    document.getElementById("minishell-check").src = "unchecked.png";
+    document.getElementById("round-check").src = "unchecked.png";
+    document.getElementById("line-check").src = "checked.png";
+    document.getElementById("rosettes-check").src = "unchecked.png";
+
     document.getElementById("sidecolor").style.display="none";
     cakeModel.traverse(function(child){
       if(child instanceof THREE.Mesh){
@@ -337,6 +570,12 @@ function selectCream(y){
     })
    }
    else if(y.value == "cream5"){
+    document.getElementById("shell-check").src = "unchecked.png";
+    document.getElementById("minishell-check").src = "unchecked.png";
+    document.getElementById("round-check").src = "unchecked.png";
+    document.getElementById("line-check").src = "unchecked.png";
+    document.getElementById("rosettes-check").src = "checked.png";
+
     document.getElementById("sidecolor").style.display="flex";
     cakeModel.traverse(function(child){
       if(child instanceof THREE.Mesh){
@@ -616,77 +855,50 @@ navNext.addEventListener('click', function(e){
 
 goToSlide(0);
 
-window.onload = function () { buildCalendar(); }   
+date = new Date();
+year = date.getFullYear();
+month = ('0' + (today.getMonth() + 1)).slice(-2);
+day = ('0' + today.getDate()).slice(-2);
+document.getElementById("current_date").innerHTML = year + " - " + month + " - " + day;
+document.getElementById("ordernumber").innerHTML = year + "" + month + "" + day + Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10);
 
-let nowMonth = new Date();  
-let today = new Date();    
-today.setHours(0, 0, 0, 0);    
+function printName()  {
+  const nameResult = document.getElementById("inputName").value;
+  document.getElementById("orderName").innerHTML = nameResult;
+};
 
+function printPhone()  {
+  const phoneResult1 = document.getElementById("inputPhone1").value;
+  const phoneResult2 = document.getElementById("inputPhone2").value;
+  const phoneResult3 = document.getElementById("inputPhone3").value;
+  document.getElementById("orderPhone").innerHTML = phoneResult1 + " - " + phoneResult2 + " - " + phoneResult3;
+};
 
-function buildCalendar() {
+function printEmail()  {
+  const emailResult1 = document.getElementById("inputEmail1").value;
+  const emailResult2 = document.getElementById("inputEmail2").value;
+  document.getElementById("orderEmail").innerHTML = emailResult1 + "@" + emailResult2;
+};
 
-    let firstDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth(), 1);     
-    let lastDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth() + 1, 0);  
-
-    let tbody_Calendar = document.querySelector(".calendar > tbody");
-    document.getElementById("calYear").innerText = nowMonth.getFullYear();            
-    document.getElementById("calMonth").innerText = leftPad(nowMonth.getMonth() + 1);  
-
-    while (tbody_Calendar.rows.length > 0) {                        
-        tbody_Calendar.deleteRow(tbody_Calendar.rows.length - 1);
-    }
-
-    let nowRow = tbody_Calendar.insertRow();                
-
-    for (let j = 0; j < firstDate.getDay(); j++) {  
-        let nowColumn = nowRow.insertCell();        
-    }
-
-    for (let nowDay = firstDate; nowDay <= lastDate; nowDay.setDate(nowDay.getDate() + 1)) {     
-
-        let nowColumn = nowRow.insertCell();       
-
-
-        let newDIV = document.createElement("p");
-        newDIV.innerHTML = leftPad(nowDay.getDate());       
-        nowColumn.appendChild(newDIV);
-
-        if (nowDay.getDay() == 6) {                
-            nowRow = tbody_Calendar.insertRow();   
-        }
-
-        if (nowDay < today) {                      
-            newDIV.className = "pastDay";
-        }
-        else if (nowDay.getFullYear() == today.getFullYear() && nowDay.getMonth() == today.getMonth() && nowDay.getDate() == today.getDate()) { // 오늘인 경우           
-            newDIV.className = "today";
-            newDIV.onclick = function () { choiceDate(this); }
-        }
-        else {                                      
-            newDIV.className = "futureDay";
-            newDIV.onclick = function () { choiceDate(this); }
-        }
-    }
+function downImg(){
+  html2canvas($("#img_area")[0]).then(function(canvas){
+      var myImage = canvas.toDataURL();
+      downloadURI(myImage, "cyberbakery_myorder.png") 
+  });
 }
 
-// 날짜 선택
-function choiceDate(newDIV) {
-    if (document.getElementsByClassName("choiceDay")[0]) {                              // 기존에 선택한 날짜가 있으면
-        document.getElementsByClassName("choiceDay")[0].classList.remove("choiceDay");  // 해당 날짜의 "choiceDay" class 제거
-    }
-    newDIV.classList.add("choiceDay");           // 선택된 날짜에 "choiceDay" class 추가
+function downloadURI(uri, name){
+  var link = document.createElement("a")
+  link.download = name;
+  link.href = uri;
+  document.body.appendChild(link);
+  link.click();
 }
 
-function prevCalendar() {
-    nowMonth = new Date(nowMonth.getFullYear(), nowMonth.getMonth() - 1, nowMonth.getDate());   
-    buildCalendar();    
-}
-
-function nextCalendar() {
-    nowMonth = new Date(nowMonth.getFullYear(), nowMonth.getMonth() + 1, nowMonth.getDate());   
-    buildCalendar();    
-}
-
-function leftPad(value) {
-    return value;
+function orderFinish(){
+  document.getElementById("finishWindowBlur").style.display = "block";
+  document.getElementById("finishWindow").style.display = "block";
+  document.getElementById("formBlur").style.display = "none";
+  document.getElementById("formContainer").style.display = "none";
+  document.getElementById("c").style.display = "none";
 }
