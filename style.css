@@ -292,10 +292,10 @@ header{width: 100%;
     position: relative;
 }
 .completed-space{
+    background-color: #f7f3f2;
     margin: auto;
+    padding: 25px 40px;
     position: relative;
-    margin-top: 20px;
-    margin-bottom: 20px;
     width: 1080px;
     height: auto;
     overflow-x: hidden;
