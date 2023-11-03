@@ -1094,4 +1094,5 @@ function orderFinish(){
   document.getElementById("finishWindow").style.display = "block";
   document.getElementById("formBlur").style.display = "none";
   document.getElementById("formContainer").style.display = "none";
+  document.getElementById("c").style.display = "none";
 }
