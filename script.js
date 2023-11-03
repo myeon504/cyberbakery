@@ -12,7 +12,6 @@ let nowMonth = new Date();
 let today = new Date();    
 today.setHours(0, 0, 0, 0);    
 
-
 function buildCalendar() {
 
     let firstDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth(), 1);     
@@ -48,7 +47,7 @@ function buildCalendar() {
         if (nowDay < today) {                      
             newDIV.className = "pastDay";
         }
-        else if (nowDay.getFullYear() == today.getFullYear() && nowDay.getMonth() == today.getMonth() && nowDay.getDate() == today.getDate()) {          
+        else if (nowDay.getFullYear() == today.getFullYear() && nowDay.getMonth() == today.getMonth() && nowDay.getDate() == today.getDate()) { // 오늘인 경우           
             newDIV.className = "today";
             newDIV.onclick = function () { choiceDate(this); }
         }
@@ -221,6 +220,18 @@ document.getElementById("gardencolor10").style.display="none";
 document.getElementById("gardenDesign").style.display="none";
 
 function checkedSolid(){
+  document.getElementById("final_palette1").style.display = "none";
+  document.getElementById("final_palette2").style.display = "none";
+  document.getElementById("final_garden1_leaves").style.display = "none";
+  document.getElementById("final_garden2_leaves").style.display = "none";
+  document.getElementById("final_garden3_leaves").style.display = "none";
+  document.getElementById("final_garden4_trunks").style.display = "none";
+  document.getElementById("final_garden1_petals").style.display = "none";
+  document.getElementById("final_garden2_petals").style.display = "none";
+  document.getElementById("final_garden3_petals").style.display = "none";
+  document.getElementById("final_garden4_petals").style.display = "none";
+  document.getElementById("final_garden1_points").style.display = "none";
+  document.getElementById("final_garden3_points").style.display = "none";
   document.getElementById("solid-check").src = "checked.png";
   document.getElementById("palette-check").src = "unchecked.png";
   document.getElementById("garden-check").src = "unchecked.png";
@@ -245,6 +256,10 @@ function checkedSolid(){
   MTL_2.color.set(0xf1f1f1);
   MTL_3.color.set(0xf1f1f1);
   MTL_4.color.set(0xf1f1f1);
+  document.getElementById('finalBase').style.fill ="#f1f1f1";
+  document.getElementById('finalTop').style.fill = "#f1f1f1";
+  document.getElementById('finalSide').style.fill = "#f1f1f1";
+  document.getElementById('finalBottom').style.fill = "#f1f1f1";
   cakeModel.traverse(function(child){
     if(child instanceof THREE.Mesh){
       if(child.name.includes("palette")||child.name.includes("garden")||child.name.includes("cream2")||child.name.includes("cream3")||child.name.includes("cream4")||child.name.includes("cream5")){
@@ -258,6 +273,18 @@ function checkedSolid(){
 
 
 function checkedPalette(){
+  document.getElementById("final_palette1").style.display = "block";
+  document.getElementById("final_palette2").style.display = "block";
+  document.getElementById("final_garden1_leaves").style.display = "none";
+  document.getElementById("final_garden2_leaves").style.display = "none";
+  document.getElementById("final_garden3_leaves").style.display = "none";
+  document.getElementById("final_garden4_trunks").style.display = "none";
+  document.getElementById("final_garden1_petals").style.display = "none";
+  document.getElementById("final_garden2_petals").style.display = "none";
+  document.getElementById("final_garden3_petals").style.display = "none";
+  document.getElementById("final_garden4_petals").style.display = "none";
+  document.getElementById("final_garden1_points").style.display = "none";
+  document.getElementById("final_garden3_points").style.display = "none";
   document.getElementById("solid-check").src = "unchecked.png";
   document.getElementById("palette-check").src = "checked.png";
   document.getElementById("garden-check").src = "unchecked.png";
@@ -286,6 +313,12 @@ function checkedPalette(){
   MTL_4.color.set(0xf1f1f1);
   MTL_5.color.set(0xf1f1f1);
   MTL_6.color.set(0xf1f1f1);
+  document.getElementById('finalBase').style.fill ="#f1f1f1";
+  document.getElementById('finalTop').style.fill = "#f1f1f1";
+  document.getElementById('finalSide').style.fill = "#f1f1f1";
+  document.getElementById('finalBottom').style.fill = "#f1f1f1";
+  document.getElementById('final_palette1').style.fill = "#f1f1f1";
+  document.getElementById('final_palette2').style.fill = "#f1f1f1";
   cakeModel.traverse(function(child){
     if(child instanceof THREE.Mesh){
       if(child.name.includes("palette")){
@@ -299,6 +332,18 @@ function checkedPalette(){
 }
 
 function checkedGarden(){
+  document.getElementById("final_palette1").style.display = "none";
+  document.getElementById("final_palette2").style.display = "none";
+  document.getElementById("final_garden1_leaves").style.display = "block";
+  document.getElementById("final_garden2_leaves").style.display = "none";
+  document.getElementById("final_garden3_leaves").style.display = "none";
+  document.getElementById("final_garden4_trunks").style.display = "none";
+  document.getElementById("final_garden1_petals").style.display = "block";
+  document.getElementById("final_garden2_petals").style.display = "none";
+  document.getElementById("final_garden3_petals").style.display = "none";
+  document.getElementById("final_garden4_petals").style.display = "none";
+  document.getElementById("final_garden1_points").style.display = "block";
+  document.getElementById("final_garden3_points").style.display = "none";
   document.getElementById("solid-check").src = "unchecked.png";
   document.getElementById("palette-check").src = "unchecked.png";
   document.getElementById("garden-check").src = "checked.png";
@@ -322,6 +367,7 @@ function checkedGarden(){
   document.getElementById("cGarden1").value="#f1f1f1";
   document.getElementById("cGarden2").value="#f1f1f1";
   document.getElementById("cGarden3").value="#f1f1f1";
+  document.getElementById("gardenDesign").value="garden1"
   MTL_1.color.set(0xf1f1f1);
   MTL_2.color.set(0xf1f1f1);
   MTL_3.color.set(0xf1f1f1);
@@ -329,6 +375,13 @@ function checkedGarden(){
   MTL_7.color.set(0xf1f1f1);
   MTL_8.color.set(0xf1f1f1);
   MTL_9.color.set(0xf1f1f1);
+  document.getElementById('finalBase').style.fill ="#f1f1f1";
+  document.getElementById('finalTop').style.fill = "#f1f1f1";
+  document.getElementById('finalSide').style.fill = "#f1f1f1";
+  document.getElementById('finalBottom').style.fill = "#f1f1f1";
+  document.getElementById('final_garden1_petals').style.fill = "#f1f1f1";
+  document.getElementById('final_garden1_points').style.fill = "#f1f1f1";
+  document.getElementById('final_garden1_leaves').style.fill = "#f1f1f1";
   cakeModel.traverse(function(child){
     if(child instanceof THREE.Mesh){
       if(child.name.includes("garden_a")){
@@ -343,6 +396,16 @@ function checkedGarden(){
 
 function selectGarden(z){
  if(z.value == "garden1"){
+  document.getElementById("final_garden1_leaves").style.display = "block";
+  document.getElementById("final_garden2_leaves").style.display = "none";
+  document.getElementById("final_garden3_leaves").style.display = "none";
+  document.getElementById("final_garden4_trunks").style.display = "none";
+  document.getElementById("final_garden1_petals").style.display = "block";
+  document.getElementById("final_garden2_petals").style.display = "none";
+  document.getElementById("final_garden3_petals").style.display = "none";
+  document.getElementById("final_garden4_petals").style.display = "none";
+  document.getElementById("final_garden1_points").style.display = "block";
+  document.getElementById("final_garden3_points").style.display = "none";
   document.getElementById("gardencolor1").style.display="flex";
   document.getElementById("gardencolor2").style.display="flex";
   document.getElementById("gardencolor3").style.display="flex";
@@ -371,6 +434,16 @@ function selectGarden(z){
   })
  }
  else if(z.value == "garden2"){
+  document.getElementById("final_garden1_leaves").style.display = "none";
+  document.getElementById("final_garden2_leaves").style.display = "block";
+  document.getElementById("final_garden3_leaves").style.display = "none";
+  document.getElementById("final_garden4_trunks").style.display = "none";
+  document.getElementById("final_garden1_petals").style.display = "none";
+  document.getElementById("final_garden2_petals").style.display = "block";
+  document.getElementById("final_garden3_petals").style.display = "none";
+  document.getElementById("final_garden4_petals").style.display = "none";
+  document.getElementById("final_garden1_points").style.display = "none";
+  document.getElementById("final_garden3_points").style.display = "none";
   document.getElementById("gardencolor1").style.display="none";
   document.getElementById("gardencolor2").style.display="none";
   document.getElementById("gardencolor3").style.display="none";
@@ -399,6 +472,16 @@ function selectGarden(z){
   })
  }
  else if(z.value == "garden3"){
+  document.getElementById("final_garden1_leaves").style.display = "none";
+  document.getElementById("final_garden2_leaves").style.display = "none";
+  document.getElementById("final_garden3_leaves").style.display = "block";
+  document.getElementById("final_garden4_trunks").style.display = "none";
+  document.getElementById("final_garden1_petals").style.display = "none";
+  document.getElementById("final_garden2_petals").style.display = "none";
+  document.getElementById("final_garden3_petals").style.display = "block";
+  document.getElementById("final_garden4_petals").style.display = "none";
+  document.getElementById("final_garden1_points").style.display = "none";
+  document.getElementById("final_garden3_points").style.display = "block";
   document.getElementById("gardencolor1").style.display="none";
   document.getElementById("gardencolor2").style.display="none";
   document.getElementById("gardencolor3").style.display="none";
@@ -427,6 +510,16 @@ function selectGarden(z){
   })
  }
  else if(z.value == "garden4"){
+  document.getElementById("final_garden1_leaves").style.display = "none";
+  document.getElementById("final_garden2_leaves").style.display = "none";
+  document.getElementById("final_garden3_leaves").style.display = "none";
+  document.getElementById("final_garden4_trunks").style.display = "block";
+  document.getElementById("final_garden1_petals").style.display = "none";
+  document.getElementById("final_garden2_petals").style.display = "none";
+  document.getElementById("final_garden3_petals").style.display = "none";
+  document.getElementById("final_garden4_petals").style.display = "block";
+  document.getElementById("final_garden1_points").style.display = "none";
+  document.getElementById("final_garden3_points").style.display = "none";
   document.getElementById("gardencolor1").style.display="none";
   document.getElementById("gardencolor2").style.display="none";
   document.getElementById("gardencolor3").style.display="none";
@@ -458,6 +551,20 @@ function selectGarden(z){
 
 function selectCream(y){
   if(y.value == "cream1"){
+    document.getElementById("final_bottom1").style.display = "block";
+    document.getElementById("final_side1").style.display = "block";
+    document.getElementById("final_top1").style.display = "block";
+    document.getElementById("final_bottom2").style.display = "none";
+    document.getElementById("final_bottom3").style.display = "none";
+    document.getElementById("final_bottom4").style.display = "none";
+    document.getElementById("final_bottom5").style.display = "none";
+    document.getElementById("final_side5").style.display = "none";
+    document.getElementById("final_top2").style.display = "none";
+    document.getElementById("final_top3").style.display = "none";
+    document.getElementById("final_top4").style.display = "none";
+    document.getElementById("final_top5").style.display = "none";
+    document.getElementById("final_creamline").src = "cream1_line.svg";
+
     document.getElementById("shell-check").src = "checked.png";
     document.getElementById("minishell-check").src = "unchecked.png";
     document.getElementById("round-check").src = "unchecked.png";
@@ -486,6 +593,20 @@ function selectCream(y){
     })
    }
    else if(y.value == "cream2"){
+    document.getElementById("final_bottom2").style.display = "block";
+    document.getElementById("final_side1").style.display = "block";
+    document.getElementById("final_top2").style.display = "block";
+    document.getElementById("final_bottom1").style.display = "none";
+    document.getElementById("final_bottom3").style.display = "none";
+    document.getElementById("final_bottom4").style.display = "none";
+    document.getElementById("final_bottom5").style.display = "none";
+    document.getElementById("final_side5").style.display = "none";
+    document.getElementById("final_top1").style.display = "none";
+    document.getElementById("final_top3").style.display = "none";
+    document.getElementById("final_top4").style.display = "none";
+    document.getElementById("final_top5").style.display = "none";
+    document.getElementById("final_creamline").src = "cream2_line.svg";
+
     document.getElementById("shell-check").src = "unchecked.png";
     document.getElementById("minishell-check").src = "checked.png";
     document.getElementById("round-check").src = "unchecked.png";
@@ -514,6 +635,20 @@ function selectCream(y){
     })
    }
    else if(y.value == "cream3"){
+    document.getElementById("final_bottom3").style.display = "block";
+    document.getElementById("final_top3").style.display = "block";
+    document.getElementById("final_bottom1").style.display = "none";
+    document.getElementById("final_bottom2").style.display = "none";
+    document.getElementById("final_bottom4").style.display = "none";
+    document.getElementById("final_bottom5").style.display = "none";
+    document.getElementById("final_side1").style.display = "none";
+    document.getElementById("final_side5").style.display = "none";
+    document.getElementById("final_top1").style.display = "none";
+    document.getElementById("final_top2").style.display = "none";
+    document.getElementById("final_top4").style.display = "none";
+    document.getElementById("final_top5").style.display = "none";
+    document.getElementById("final_creamline").src = "cream3_line.svg";
+
     document.getElementById("shell-check").src = "unchecked.png";
     document.getElementById("minishell-check").src = "unchecked.png";
     document.getElementById("round-check").src = "checked.png";
@@ -542,6 +677,20 @@ function selectCream(y){
     })
    }
    else if(y.value == "cream4"){
+    document.getElementById("final_bottom4").style.display = "block";
+    document.getElementById("final_top4").style.display = "block";
+    document.getElementById("final_bottom1").style.display = "none";
+    document.getElementById("final_bottom2").style.display = "none";
+    document.getElementById("final_bottom3").style.display = "none";
+    document.getElementById("final_bottom5").style.display = "none";
+    document.getElementById("final_side1").style.display = "none";
+    document.getElementById("final_side5").style.display = "none";
+    document.getElementById("final_top1").style.display = "none";
+    document.getElementById("final_top2").style.display = "none";
+    document.getElementById("final_top3").style.display = "none";
+    document.getElementById("final_top5").style.display = "none";
+    document.getElementById("final_creamline").src = "cream4_line.svg";
+    
     document.getElementById("shell-check").src = "unchecked.png";
     document.getElementById("minishell-check").src = "unchecked.png";
     document.getElementById("round-check").src = "unchecked.png";
@@ -570,6 +719,19 @@ function selectCream(y){
     })
    }
    else if(y.value == "cream5"){
+    document.getElementById("final_bottom5").style.display = "block";
+    document.getElementById("final_side5").style.display = "block";
+    document.getElementById("final_top5").style.display = "block";
+    document.getElementById("final_bottom1").style.display = "none";
+    document.getElementById("final_bottom2").style.display = "none";
+    document.getElementById("final_bottom3").style.display = "none";
+    document.getElementById("final_bottom4").style.display = "none";
+    document.getElementById("final_side1").style.display = "none";
+    document.getElementById("final_top1").style.display = "none";
+    document.getElementById("final_top2").style.display = "none";
+    document.getElementById("final_top3").style.display = "none";
+    document.getElementById("final_top4").style.display = "none";
+    document.getElementById("final_creamline").src = "cream5_line.svg";
     document.getElementById("shell-check").src = "unchecked.png";
     document.getElementById("minishell-check").src = "unchecked.png";
     document.getElementById("round-check").src = "unchecked.png";
@@ -606,7 +768,6 @@ renderer.setClearColor(0x000000, 0);
 renderer.shadowMap.enabled = true;
 renderer.setPixelRatio(window.devicePixelRatio);
 
-
 var cameraFar = 5;
 
 document.body.appendChild(renderer.domElement);
@@ -632,54 +793,87 @@ let MTL_14 = new THREE.MeshLambertMaterial({color: 0xf1f1f1});
 let MTL_15 = new THREE.MeshLambertMaterial({color: 0xf1f1f1});
 let MTL_16 = new THREE.MeshLambertMaterial({color: 0xf1f1f1, transparent : true, opacity : 0.8});
 
+
 function selectBaseColor(a){
   MTL_1.color.set(a);
-}
+  document.getElementById('finalBase').style.fill = a;
+};
+
 function selectTopColor(b){
   MTL_2.color.set(b);
-}
+  document.getElementById('finalTop').style.fill = b;
+};
+
 function selectSideColor(c){
   MTL_3.color.set(c);
-}
+  document.getElementById('finalSide').style.fill = c;
+};
+
 function selectBottomColor(d){
   MTL_4.color.set(d);
-}
+  document.getElementById('finalBottom').style.fill = d;
+};
+
 function selectColor1Color(e){
   MTL_5.color.set(e);
-}
+  document.getElementById('final_palette1').style.fill = e;
+};
+
 function selectColor2Color(f){
   MTL_6.color.set(f);
-}
+  document.getElementById('final_palette2').style.fill = f;
+};
+
 function selectGarden1Color(g){
   MTL_7.color.set(g);
-}
+  document.getElementById('final_garden1_petals').style.fill = g;
+};
+
 function selectGarden2Color(h){
   MTL_8.color.set(h);
-}
+  document.getElementById('final_garden1_points').style.fill = h;
+};
+
 function selectGarden3Color(i){
   MTL_9.color.set(i);
-}
+  document.getElementById('final_garden1_leaves').style.fill = i;
+};
+
 function selectGarden4Color(j){
   MTL_10.color.set(j);
-}
+  document.getElementById('final_garden2_petals').style.fill = j;
+};
+
 function selectGarden5Color(k){
   MTL_11.color.set(k);
-}
+  document.getElementById('final_garden2_leaves').style.fill = k;
+};
+
 function selectGarden6Color(l){
   MTL_12.color.set(l);
-}
+  document.getElementById('final_garden3_petals').style.fill = l;
+};
+
 function selectGarden7Color(m){
   MTL_13.color.set(m);
-}
+  document.getElementById('final_garden3_leaves').style.fill = m;
+};
+
 function selectGarden8Color(n){
   MTL_14.color.set(n);
-}
+  document.getElementById('final_garden3_points').style.fill = n;
+};
+
 function selectGarden9Color(o){
   MTL_15.color.set(o);
-}
+  document.getElementById('final_garden4_trunks').style.fill = o;
+};
+
 function selectGarden10Color(p){
   MTL_16.color.set(p);
-}
+  document.getElementById('final_garden4_petals').style.fill = p;
+};
+
 let INITIAL_MAP = [
 { childID: "base", mtl: MTL_1},
 { childID: "cream1_t", mtl: MTL_2},
@@ -725,7 +919,7 @@ loader.load(MODEL_PATH, function (gltf) {
         child.visible = false;
       }
     }
-  })
+  });
   
   cakeModel.scale.set(0.1, 0.1, 0.1);
   cakeModel.rotation.y = Math.PI;
@@ -734,7 +928,7 @@ loader.load(MODEL_PATH, function (gltf) {
 
   for (let object of INITIAL_MAP) {
     initColor(cakeModel, object.childID, object.mtl);
-  }
+  };
 
   function initColor(parent, type, mtl) {
   parent.traverse(o => {
@@ -745,7 +939,7 @@ loader.load(MODEL_PATH, function (gltf) {
       }
     }
   });
-}
+};
 
 
   scene.add(cakeModel);
@@ -789,7 +983,7 @@ function animate() {
     camera.aspect = canvas.clientWidth / canvas.clientHeight;
     camera.updateProjectionMatrix();
   }
-}
+};
 
 animate();
 
@@ -805,7 +999,7 @@ function resizeRendererToDisplaySize(renderer) {
     renderer.setSize(width, height, false);
   }
   return needResize;
-}
+};
 
 
 var sliderWrapper = document.getElementsByClassName('page-container'),
@@ -900,5 +1094,4 @@ function orderFinish(){
   document.getElementById("finishWindow").style.display = "block";
   document.getElementById("formBlur").style.display = "none";
   document.getElementById("formContainer").style.display = "none";
-  document.getElementById("c").style.display = "none";
 }
