@@ -1075,13 +1075,23 @@ function printEmail()  {
 };
 
 function downImg(){
+
   var svgElements = document.body.querySelectorAll('svg');
-  svgElements.forEach(function(item) {
-  item.setAttribute("width", item.getBoundingClientRect().width);
-  item.setAttribute("height", item.getBoundingClientRect().height);
-  item.style.width = null;
-  item.style.height= null;
-});
+  
+  function processSvg(svg) {
+    svg.setAttribute("width", svg.getBoundingClientRect().width);
+    svg.setAttribute("height", svg.getBoundingClientRect().height);
+    svg.style.width = null;
+    svg.style.height = null;
+  }
+
+  svgElements.forEach(function (item) {
+    processSvg(item);
+  });
+
+  processSvg(document.getElementById('final_baseline'));
+  processSvg(document.getElementById('final_creamline'));
+  
   html2canvas($("#img_area")[0]).then(function(canvas){
       var myImage = canvas.toDataURL();
       downloadURI(myImage, "cyberbakery_myorder.png") 
