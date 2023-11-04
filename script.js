@@ -1074,6 +1074,14 @@ function printEmail()  {
   document.getElementById("orderEmail").innerHTML = emailResult1 + "@" + emailResult2;
 };
 
+var svgElements = document.body.querySelectorAll('svg');
+svgElements.forEach(function(item) {
+    item.setAttribute("width", item.getBoundingClientRect().width);
+    item.setAttribute("height", item.getBoundingClientRect().height);
+    item.style.width = '100%';
+    item.style.height= '100%';
+});
+
 function downImg(){
   html2canvas($("#img_area")[0]).then(function(canvas){
       var myImage = canvas.toDataURL();
