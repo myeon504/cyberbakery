@@ -1075,23 +1075,28 @@ function printEmail()  {
 };
 
 function downImg(){
-
+  
+  var svgbaseline = document.getElementById('final_baseline');
+  var svgcreamline = document.getElementById('final_creamline');
   var svgElements = document.body.querySelectorAll('svg');
-  
-  function processSvg(svg) {
-    svg.setAttribute("width", svg.getBoundingClientRect().width);
-    svg.setAttribute("height", svg.getBoundingClientRect().height);
-    svg.style.width = null;
-    svg.style.height = null;
-  }
-
-  svgElements.forEach(function (item) {
-    processSvg(item);
+  svgElements.forEach(function(item) {
+  item.setAttribute("width", item.getBoundingClientRect().width);
+  item.setAttribute("height", item.getBoundingClientRect().height);
+  item.style.width = null;
+  item.style.height= null;
   });
-
-  processSvg(document.getElementById('final_baseline'));
-  processSvg(document.getElementById('final_creamline'));
-  
+  svgbaseline.forEach(function(item) {
+    item.setAttribute("width", item.getBoundingClientRect().width);
+    item.setAttribute("height", item.getBoundingClientRect().height);
+    item.style.width = null;
+    item.style.height= null;
+    });
+    svgcreamline.forEach(function(item) {
+      item.setAttribute("width", item.getBoundingClientRect().width);
+      item.setAttribute("height", item.getBoundingClientRect().height);
+      item.style.width = null;
+      item.style.height= null;
+      });
   html2canvas($("#img_area")[0]).then(function(canvas){
       var myImage = canvas.toDataURL();
       downloadURI(myImage, "cyberbakery_myorder.png") 
