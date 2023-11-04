@@ -563,8 +563,11 @@ function selectCream(y){
     document.getElementById("final_top3").style.display = "none";
     document.getElementById("final_top4").style.display = "none";
     document.getElementById("final_top5").style.display = "none";
-    document.getElementById("final_creamline").src = "cream1_line.svg";
-
+    document.getElementById("final_creamline1").style.display = "block";
+    document.getElementById("final_creamline2").style.display = "none";
+    document.getElementById("final_creamline3").style.display = "none";
+    document.getElementById("final_creamline4").style.display = "none";
+    document.getElementById("final_creamline5").style.display = "none";
     document.getElementById("shell-check").src = "checked.png";
     document.getElementById("minishell-check").src = "unchecked.png";
     document.getElementById("round-check").src = "unchecked.png";
@@ -605,8 +608,11 @@ function selectCream(y){
     document.getElementById("final_top3").style.display = "none";
     document.getElementById("final_top4").style.display = "none";
     document.getElementById("final_top5").style.display = "none";
-    document.getElementById("final_creamline").src = "cream2_line.svg";
-
+    document.getElementById("final_creamline1").style.display = "none";
+    document.getElementById("final_creamline2").style.display = "block";
+    document.getElementById("final_creamline3").style.display = "none";
+    document.getElementById("final_creamline4").style.display = "none";
+    document.getElementById("final_creamline5").style.display = "none";
     document.getElementById("shell-check").src = "unchecked.png";
     document.getElementById("minishell-check").src = "checked.png";
     document.getElementById("round-check").src = "unchecked.png";
@@ -647,8 +653,11 @@ function selectCream(y){
     document.getElementById("final_top2").style.display = "none";
     document.getElementById("final_top4").style.display = "none";
     document.getElementById("final_top5").style.display = "none";
-    document.getElementById("final_creamline").src = "cream3_line.svg";
-
+    document.getElementById("final_creamline1").style.display = "none";
+    document.getElementById("final_creamline2").style.display = "none";
+    document.getElementById("final_creamline3").style.display = "block";
+    document.getElementById("final_creamline4").style.display = "none";
+    document.getElementById("final_creamline5").style.display = "none";
     document.getElementById("shell-check").src = "unchecked.png";
     document.getElementById("minishell-check").src = "unchecked.png";
     document.getElementById("round-check").src = "checked.png";
@@ -689,8 +698,11 @@ function selectCream(y){
     document.getElementById("final_top2").style.display = "none";
     document.getElementById("final_top3").style.display = "none";
     document.getElementById("final_top5").style.display = "none";
-    document.getElementById("final_creamline").src = "cream4_line.svg";
-    
+    document.getElementById("final_creamline1").style.display = "none";
+    document.getElementById("final_creamline2").style.display = "none";
+    document.getElementById("final_creamline3").style.display = "none";
+    document.getElementById("final_creamline4").style.display = "block";
+    document.getElementById("final_creamline5").style.display = "none";
     document.getElementById("shell-check").src = "unchecked.png";
     document.getElementById("minishell-check").src = "unchecked.png";
     document.getElementById("round-check").src = "unchecked.png";
@@ -731,7 +743,11 @@ function selectCream(y){
     document.getElementById("final_top2").style.display = "none";
     document.getElementById("final_top3").style.display = "none";
     document.getElementById("final_top4").style.display = "none";
-    document.getElementById("final_creamline").src = "cream5_line.svg";
+    document.getElementById("final_creamline1").style.display = "none";
+    document.getElementById("final_creamline2").style.display = "none";
+    document.getElementById("final_creamline3").style.display = "none";
+    document.getElementById("final_creamline4").style.display = "none";
+    document.getElementById("final_creamline5").style.display = "block";
     document.getElementById("shell-check").src = "unchecked.png";
     document.getElementById("minishell-check").src = "unchecked.png";
     document.getElementById("round-check").src = "unchecked.png";
@@ -1074,34 +1090,27 @@ function printEmail()  {
   document.getElementById("orderEmail").innerHTML = emailResult1 + "@" + emailResult2;
 };
 
+function orderFinish(){
+  document.getElementById("finishWindowBlur").style.display = "block";
+  document.getElementById("finishWindow").style.display = "block";
+  document.getElementById("formBlur").style.display = "none";
+  document.getElementById("formContainer").style.display = "none";
+}
+
 function downImg(){
-  
-  var svgbaseline = document.getElementById('final_baseline');
-  var svgcreamline = document.getElementById('final_creamline');
   var svgElements = document.body.querySelectorAll('svg');
-  svgElements.forEach(function(svgitem1) {
-  svgitem1.setAttribute("width", svgitem1.getBoundingClientRect().width);
-  svgitem1.setAttribute("height", svgitem1.getBoundingClientRect().height);
-  svgitem1.style.width = null;
-  svgitem1.style.height= null;
+  svgElements.forEach(function(item) {
+  item.setAttribute("width", item.getBoundingClientRect().width);
+  item.setAttribute("height", item.getBoundingClientRect().height);
+  item.style.width = null;
+  item.style.height= null;
   });
-  svgbaseline.forEach(function(svgitem2) {
-    svgitem2.setAttribute("width", svgitem2.getBoundingClientRect().width);
-    svgitem2.setAttribute("height", svgitem2.getBoundingClientRect().height);
-    svgitem2.style.width = null;
-    svgitem2.style.height= null;
-    });
-    svgcreamline.forEach(function(svgitem3) {
-      svgitem3.setAttribute("width", svgitem3.getBoundingClientRect().width);
-      svgitem3.setAttribute("height", svgitem3.getBoundingClientRect().height);
-      svgitem3.style.width = null;
-      svgitem3.style.height= null;
-      });
   html2canvas($("#img_area")[0]).then(function(canvas){
       var myImage = canvas.toDataURL();
       downloadURI(myImage, "cyberbakery_myorder.png") 
   });
 }
+
 
 function downloadURI(uri, name){
   var link = document.createElement("a")
@@ -1109,12 +1118,4 @@ function downloadURI(uri, name){
   link.href = uri;
   document.body.appendChild(link);
   link.click();
-}
-
-function orderFinish(){
-  document.getElementById("finishWindowBlur").style.display = "block";
-  document.getElementById("finishWindow").style.display = "block";
-  document.getElementById("formBlur").style.display = "none";
-  document.getElementById("formContainer").style.display = "none";
-  document.getElementById("c").style.display = "none";
 }
