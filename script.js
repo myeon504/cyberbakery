@@ -1079,23 +1079,23 @@ function downImg(){
   var svgbaseline = document.getElementById('final_baseline');
   var svgcreamline = document.getElementById('final_creamline');
   var svgElements = document.body.querySelectorAll('svg');
-  svgElements.forEach(function(item) {
-  item.setAttribute("width", item.getBoundingClientRect().width);
-  item.setAttribute("height", item.getBoundingClientRect().height);
-  item.style.width = null;
-  item.style.height= null;
+  svgElements.forEach(function(svgitem1) {
+  svgitem1.setAttribute("width", item.getBoundingClientRect().width);
+  svgitem1.setAttribute("height", item.getBoundingClientRect().height);
+  svgitem1.style.width = null;
+  svgitem1.style.height= null;
   });
-  svgbaseline.forEach(function(item) {
-    item.setAttribute("width", item.getBoundingClientRect().width);
-    item.setAttribute("height", item.getBoundingClientRect().height);
-    item.style.width = null;
-    item.style.height= null;
+  svgbaseline.forEach(function(svgitem2) {
+    svgitem2.setAttribute("width", item.getBoundingClientRect().width);
+    svgitem2.setAttribute("height", item.getBoundingClientRect().height);
+    svgitem2.style.width = null;
+    svgitem2.style.height= null;
     });
-    svgcreamline.forEach(function(item) {
-      item.setAttribute("width", item.getBoundingClientRect().width);
-      item.setAttribute("height", item.getBoundingClientRect().height);
-      item.style.width = null;
-      item.style.height= null;
+    svgcreamline.forEach(function(svgitem3) {
+      svgitem3.setAttribute("width", item.getBoundingClientRect().width);
+      svgitem3.setAttribute("height", item.getBoundingClientRect().height);
+      svgitem3.style.width = null;
+      svgitem3.style.height= null;
       });
   html2canvas($("#img_area")[0]).then(function(canvas){
       var myImage = canvas.toDataURL();
